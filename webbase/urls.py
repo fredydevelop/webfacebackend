@@ -21,7 +21,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls")),
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('olori_oko', admin.site.urls),
-    path("",include("myapi.urls"))
+    path("",include("backy.urls"))
 ]
 
 urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name="index.html"))]

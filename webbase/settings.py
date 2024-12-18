@@ -46,7 +46,7 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["webfacebackend.onrender.com","127.0.0.1","localhost"]
 
 
 # Application definition
