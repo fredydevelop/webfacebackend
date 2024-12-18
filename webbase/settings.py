@@ -35,7 +35,7 @@ SECRET_KEY = env("SECRET_KEY")
 if ENVIRONMENT == "development":
     DEBUG = True
 else:
-    DEBUG = True
+    DEBUG = False
 
 
     
@@ -46,7 +46,7 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
