@@ -163,6 +163,7 @@ class LoginView(APIView):
     
 
 
+@method_decorator(csrf_protect,name="dispatch")
 class VerificationView(APIView): 
     def post(self,request,format=None):  
         user_id = self.request.session.get("id")
