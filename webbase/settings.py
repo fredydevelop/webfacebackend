@@ -161,7 +161,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -203,6 +202,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8000",
     "http://192.168.208.1:3000",
-    "https://webfacebackend.onrender.com"
+    "https://webfacebackend.onrender.com",
+    "http://127.0.0.1:8000",
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://192.168.208.1:3000",
+    "https://webfacebackend.onrender.com",
+    "http://127.0.0.1:8000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
