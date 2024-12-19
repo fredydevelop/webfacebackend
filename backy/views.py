@@ -15,7 +15,7 @@
 #import keras
 #import zipfile
 # from your_module import L1Dist  # Update with your actual import for L1Dist
-import os
+import os 
 from django.conf import settings
 from L1layer import L1Dist
 from rest_framework.views import APIView
@@ -181,7 +181,7 @@ class VerificationView(APIView):
         if not user_detail:
             auth_logout(self.request)
             self.request.session.flush() 
-            return Response({"error": "User not found"}, status=404)
+            return Response({"error": "User not found"})
 
         try:
             db_img_path = user_detail.profile_image.path
@@ -193,7 +193,8 @@ class VerificationView(APIView):
 
             model_path = settings.MODEL_PATH
             if not os.path.exists(model_path):
-                return Response({"error": "Model file not found"}, status=500)
+                print("error", "Model file not found")
+                return Response({"error": "Model file not found"})
             model = tf.keras.models.load_model(model_path, custom_objects={'L1Dist': L1Dist})
             is_match = verify_func(model, db_picture, image_array, 0.6)
             print(is_match)

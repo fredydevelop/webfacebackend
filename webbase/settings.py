@@ -36,6 +36,8 @@ if ENVIRONMENT == "development":
     DEBUG = True
 else:
     DEBUG = False
+    MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
+
 
 
     
@@ -45,6 +47,7 @@ else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
+#"webfacebackend.onrender.com","127.0.0.1","localhost"
 
 ALLOWED_HOSTS = ["webfacebackend.onrender.com","127.0.0.1","localhost"]
 
@@ -173,8 +176,12 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    MODEL_DIR = os.getenv('MODEL_DIR', os.path.join(BASE_DIR, 'models'))
+    MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
 
-
+# Model directory
+MODEL_DIR = os.getenv('MODEL_DIR', os.path.join(BASE_DIR, 'models'))
+MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
 # Just included this
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR,"build/static")
@@ -201,19 +208,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://192.168.208.1:3000",
-    "https://webfacebackend.onrender.com",
-    "http://127.0.0.1:8000",
-]
+     "http://localhost:3000",
+     "http://localhost:8000",
+     "http://192.168.208.1:3000",
+     "https://webfacebackend.onrender.com",
+     "http://127.0.0.1:8000",
+ ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://192.168.208.1:3000",
-    "https://webfacebackend.onrender.com",
-    "http://127.0.0.1:8000",
-]
+     "http://localhost:3000",
+     "http://localhost:8000",
+     "http://192.168.208.1:3000",
+     "https://webfacebackend.onrender.com",
+     "http://127.0.0.1:8000",
+ ]
 
 CORS_ALLOW_CREDENTIALS = True
