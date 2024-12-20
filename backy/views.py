@@ -85,10 +85,10 @@ class SignupView(APIView):
         password_confirmation = data.get("confirmPassword")
         
         if password != password_confirmation:
-            return Response({"error": "Passwords do not match"}, status=400)
+            return Response({"error": "Passwords do not match"})
 
         if User.objects.filter(username=email).first():
-            return Response({"error": "User already exists"}, status=400)
+            return Response({"error": "User already exists"})
         
         new_user = User.objects.create_user(username=email,password=password)
         UserProfile.objects.create(user=new_user,profile_image="")
@@ -196,7 +196,7 @@ class VerificationView(APIView):
                 print("error", "Model file not found")
                 return Response({"error": "Model file not found"})
             model = tf.keras.models.load_model(model_path, custom_objects={'L1Dist': L1Dist})
-            is_match = verify_func(model, db_picture, image_array, 0.6)
+            is_match = verify_func(model, db_picture, image_array, 0.5)
             print(is_match)
 
             if is_match:
@@ -210,6 +210,7 @@ class VerificationView(APIView):
             return Response({"error": str(e)})
    
 
+@method_decorator(csrf_protect,name="dispatch")
 class LogoutView(APIView):
     def post(self,request,format=None):
         auth_logout(request)

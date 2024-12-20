@@ -22,7 +22,7 @@ ENVIRONMENT=env("ENVIRONMENT", default="production")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
+MODEL_PATH = os.path.join(BASE_DIR, 'new_siamese_model.h5')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -36,7 +36,7 @@ if ENVIRONMENT == "development":
     DEBUG = True
 else:
     DEBUG = False
-    MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
+    MODEL_PATH = os.path.join(BASE_DIR, 'new_siamese_model.h5')
 
 
 
@@ -144,6 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -176,12 +177,15 @@ if not DEBUG:    # Tell Django to copy static assets into a path called `staticf
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, "static")
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    MODEL_DIR = os.getenv('MODEL_DIR', os.path.join(BASE_DIR, 'models'))
-    MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
+    MODEL_PATH = os.path.join(BASE_DIR, 'new_siamese_model.h5')
+
 
 # Model directory
-MODEL_DIR = os.getenv('MODEL_DIR', os.path.join(BASE_DIR, 'models'))
-MODEL_PATH = os.path.join(BASE_DIR, 'siamese_model.h5')
+# MODEL_DIR = os.getenv('MODEL_DIR', os.path.join(BASE_DIR, 'models'))
+# MODEL_PATH = os.path.join(BASE_DIR, 'new_siamese_model.h5')
+
+MODEL_PATH = os.path.join(BASE_DIR, 'new_siamese_model.h5')
+
 # Just included this
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR,"build/static")
@@ -207,20 +211,21 @@ ACCOUNT_USERNAME_BLACKLIST=["admin","olori_oko","account"]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+#Comment this in development
 CORS_ALLOWED_ORIGINS = [
-     "http://localhost:3000",
-     "http://localhost:8000",
-     "http://192.168.208.1:3000",
-     "https://webfacebackend.onrender.com",
-     "http://127.0.0.1:8000",
- ]
+          "http://localhost:3000",
+      "http://localhost:8000",
+      "http://192.168.208.1:3000",
+      "https://webfacebackend.onrender.com",
+      "http://127.0.0.1:8000",
+  ]
 
 CSRF_TRUSTED_ORIGINS = [
-     "http://localhost:3000",
-     "http://localhost:8000",
-     "http://192.168.208.1:3000",
-     "https://webfacebackend.onrender.com",
-     "http://127.0.0.1:8000",
- ]
+      "http://localhost:3000",
+      "http://localhost:8000",
+      "http://192.168.208.1:3000",
+      "https://webfacebackend.onrender.com",
+      "http://127.0.0.1:8000",
+  ]
 
 CORS_ALLOW_CREDENTIALS = True
